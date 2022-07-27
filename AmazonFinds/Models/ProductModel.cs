@@ -13,6 +13,7 @@ namespace AmazonFinds.Models
         public string ProductName { get; set; }
         
         [Required]
+        [Display(Name = "Product Link")]
         [Url(ErrorMessage ="Please enter a valid URL")]
         public string ProductLink { get; set; }
         public DateTime? CreatedOn { get; set; }

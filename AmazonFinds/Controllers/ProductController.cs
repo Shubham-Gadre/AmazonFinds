@@ -25,6 +25,7 @@ namespace AmazonFinds.Controllers
         public ViewResult ProductAddEditPage(bool isSuccess=false)
         {
             ViewBag.isSuccess = isSuccess;
+            
            
             return View();
         }
@@ -32,7 +33,7 @@ namespace AmazonFinds.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewProduct(ProductModel _productModel)
         {
-            if (_productModel.ProductName!="")
+            if (ModelState.IsValid)
             {
                 int id = await _productRepository.AddNewProduct(_productModel);
                 if (id > 0)
@@ -40,7 +41,8 @@ namespace AmazonFinds.Controllers
                     return RedirectToAction(nameof(ProductAddEditPage), new { isSuccess = true });
                 }
             }
-            return View();
+            
+            return View("ProductAddEditPage");
         }
 
         public ViewResult Admin()
