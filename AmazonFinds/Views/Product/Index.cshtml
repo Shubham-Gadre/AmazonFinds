@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ProductModel>
+
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var products in Model)
+        {
+            <div class="card" style="width: 18rem; padding:10px;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@products.ProductName</h5>
+                    <p class="card-text">@products.ProductLink</p>
+                    <a href="@products.ProductLink" class="btn btn-primary" target="_blank">Go somewhere</a>
+                    @if (ViewBag.isDeleteEnable == true)
+                    {
+                        <a ><input asp-action="DeleteProduct" asp-controller="Product" type="button" class="btn btn-danger" value="Delete"/></a>
+                    }
+                </div>
+
+     </div>
+        }
+    </div>
+</div>
+
+
