@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<ProductModel>
 
+@{
+    ViewData["Title"] = "Products";
 
+}
 
 <div class="container">
     <div class="row">
@@ -14,13 +17,13 @@
                     <a href="@products.ProductLink" class="btn btn-primary" target="_blank">Buy</a>
                     @if (ViewBag.isDeleteEnable == true)
                     {
-                        <a ><input asp-action="DeleteProduct" asp-controller="Product" type="button" class="btn btn-danger" value="Delete"/></a>
+                        <a><input asp-action="DeleteProduct" asp-controller="Product" type="button" class="btn btn-danger" value="Delete" /></a>
                     }
                 </div>
-
-     </div>
+            </div>
         }
     </div>
+   
 </div>
 
 
