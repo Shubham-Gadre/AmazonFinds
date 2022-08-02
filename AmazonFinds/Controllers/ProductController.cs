@@ -77,13 +77,13 @@ namespace AmazonFinds.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> DeleteProduct(ProductModel model)
+       
+        public async Task<IActionResult> DeleteProduct(int Id)
         {
             var simpleData = await _productRepository.GetAllProducts();
-            if (model.Id!=0)
+            if (Id != 0)
             {
-                await _productRepository.DeleteProduct(model.Id);
+                await _productRepository.DeleteProduct(Id);
                 var data = await _productRepository.GetAllProducts();
                 if (data != null)
                 {

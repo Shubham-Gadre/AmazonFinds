@@ -39,6 +39,7 @@ namespace AmazonFinds.Repository
                 {
                     products.Add(new ProductModel()
                     {
+                        ProductId=item.Id,
                         ProductName=item.ProductName,
                         ProductLink=item.ProductLink,
                         CreatedOn=item.CreatedOn,

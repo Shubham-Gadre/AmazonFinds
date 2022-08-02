@@ -17,25 +17,24 @@
 <div class="container">
     <div class="row">
         @foreach (var products in Model)
-        {
-            <form method="post" asp-action="DeleteProduct" asp-controller="Product" enctype="multipart/form-data">
-                <div class="card" style="width: 18rem; padding:10px;">
+        {               
+            <div class="card" style="width: 18rem; padding:10px;">
                     <img src="@products.ProductImageUrl" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <span style="visibility:hidden">@products.Id</span>
+                        <span>@products.ProductId</span>
                         <h5 class="card-title">@products.ProductName</h5>
                         <p class="card-text">@products.ProductLink</p>
                         <a href="@products.ProductLink" class="btn btn-primary" target="_blank">Buy</a>
                         @if (ViewBag.isDeleteEnable == true)
                         {
-                                <button class="btn btn-danger" type="submit">Delete</button>
+                                <input type="submit" class="btn btn-info form-control" value="Delete" onclick="location.href='@Url.Action("DeleteProduct", "Product", new { Id = @products.ProductId })'" />
+
                         }
                     </div>
-                </div>
-            </form>
+            </div>  
+            
         }
-    </div>
-   
+    </div>  
 </div>
 
 

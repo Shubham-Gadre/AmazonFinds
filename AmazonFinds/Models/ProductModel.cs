@@ -9,7 +9,7 @@ namespace AmazonFinds.Models
 {
     public class ProductModel
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         [Required]
         public string ProductName { get; set; }
 
