@@ -22,6 +22,7 @@ namespace AmazonFinds.Repository
                 ProductName=model.ProductName,
                 ProductLink=model.ProductLink,
                 CreatedOn=DateTime.Now,
+                ProductImageUrl=model.ProductImageUrl,
 
             };
             await  _productContext.AddAsync(newProduct);
@@ -41,7 +42,8 @@ namespace AmazonFinds.Repository
                         ProductName=item.ProductName,
                         ProductLink=item.ProductLink,
                         CreatedOn=item.CreatedOn,
-                        UpdatedOn=item.UpdatedOn
+                        UpdatedOn=item.UpdatedOn,
+                        ProductImageUrl=item.ProductImageUrl,   
 
                     });
 
@@ -50,21 +52,17 @@ namespace AmazonFinds.Repository
             return products;
         }
 
-        public ProductModel GetProductById( int id)
+        public async Task DeleteProduct(int passedId)
         {
-            return DataSource().Where(x => x.Id == id).FirstOrDefault();
-        }
+            var ProductToBeDeleted = await _productContext.Products.FindAsync(passedId);
 
-        private List<ProductModel> DataSource()
-        {
-            return new List<ProductModel>()
+            
+            if (ProductToBeDeleted != null)
             {
-                new ProductModel(){ Id=1,ProductName="Phone", ProductLink="Link2"},
-                new ProductModel(){ Id=2,ProductName="TV", ProductLink="Link3"},
-                new ProductModel(){ Id=3,ProductName="Oven", ProductLink="Link4"},
-                new ProductModel(){ Id=4,ProductName="Jwellery", ProductLink="Link5"},
-                new ProductModel(){ Id=5,ProductName="Dumbell", ProductLink="Link6"},
-            };
+                _productContext.Remove(ProductToBeDeleted);
+                await _productContext.SaveChangesAsync();
+            }
         }
+        
     }
 }

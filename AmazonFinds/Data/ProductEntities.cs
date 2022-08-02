@@ -12,5 +12,6 @@ namespace AmazonFinds.Data
         public string ProductLink { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
+        public string ProductImageUrl { get; set; }
     }
 }

@@ -4,23 +4,35 @@
     ViewData["Title"] = "Products";
 
 }
+@if (ViewBag.producDeleted== true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Product Deleted!!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
 <div class="container">
     <div class="row">
         @foreach (var products in Model)
         {
-            <div class="card" style="width: 18rem; padding:10px;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@products.ProductName</h5>
-                    <p class="card-text">@products.ProductLink</p>
-                    <a href="@products.ProductLink" class="btn btn-primary" target="_blank">Buy</a>
-                    @if (ViewBag.isDeleteEnable == true)
-                    {
-                        <a><input asp-action="DeleteProduct" asp-controller="Product" type="button" class="btn btn-danger" value="Delete" /></a>
-                    }
+            <form method="post" asp-action="DeleteProduct" asp-controller="Product" enctype="multipart/form-data">
+                <div class="card" style="width: 18rem; padding:10px;">
+                    <img src="@products.ProductImageUrl" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <span style="visibility:hidden">@products.Id</span>
+                        <h5 class="card-title">@products.ProductName</h5>
+                        <p class="card-text">@products.ProductLink</p>
+                        <a href="@products.ProductLink" class="btn btn-primary" target="_blank">Buy</a>
+                        @if (ViewBag.isDeleteEnable == true)
+                        {
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                        }
+                    </div>
                 </div>
-            </div>
+            </form>
         }
     </div>
    
