@@ -19,15 +19,13 @@
         @foreach (var products in Model)
         {               
             <div class="card" style="width: 18rem; padding:10px;">
-                    <img src="@products.ProductImageUrl" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <span>@products.ProductId</span>
-                        <h5 class="card-title">@products.ProductName</h5>
-                        <p class="card-text">@products.ProductLink</p>
+                    <img src="@products.ProductImageUrl" class="card-img-top" alt="product image">
+                    <div class="card-body">                       
+                        <h5 class="card-title">@products.ProductName</h5>                        
                         <a href="@products.ProductLink" class="btn btn-primary" target="_blank">Buy</a>
                         @if (ViewBag.isDeleteEnable == true)
                         {
-                                <input type="submit" class="btn btn-info form-control" value="Delete" onclick="location.href='@Url.Action("DeleteProduct", "Product", new { Id = @products.ProductId })'" />
+                                <input type="submit" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteProduct", "Product", new { Id = @products.ProductId })'" />
 
                         }
                     </div>
