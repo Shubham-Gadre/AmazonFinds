@@ -26,7 +26,9 @@ namespace AmazonFinds
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductContext>(options=>options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AmazonFinds;Integrated Security=True;"));
+           // services.AddDbContext<ProductContext>(options=>options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AmazonFinds;Integrated Security=True;"));
+            services.AddDbContext<ProductContext>(options => options.UseSqlServer("Data Source=SQL8004.site4now.net,1433;Initial Catalog=db_a8b337_amazonfindsdatabas;User Id=db_a8b337_amazonfindsdatabas_admin;Password=Shubham@007;"));
+
             services.AddControllersWithViews();
             services.AddScoped<ProductRepository, ProductRepository>();
         }
