@@ -15,10 +15,10 @@
     }
 
 <div class="container">
-    <div class="row">
+    <div class="row" >
         @foreach (var products in Model)
         {               
-            <div class="card" style="width: 18rem; padding:10px;">
+            <div class="card" style="width: 18rem; margin:20px;">
                     <img src="@products.ProductImageUrl" class="card-img-top" alt="product image">
                     <div class="card-body">                       
                         <h5 class="card-title">@products.ProductName</h5>                        
@@ -29,6 +29,7 @@
 
                         }
                     </div>
+                    
             </div>  
             
         }
